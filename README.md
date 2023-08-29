@@ -22,7 +22,7 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 
 - [Vision Statement](../../wiki/Vision%20Statement)
 - [Requirements](../../wiki/Requirements)
-- [Development Plan](../../wiki/Software%20Development%20Plan)
+- [Software Development Plan](../../wiki/Software%20Development%20Plan)
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan)
 
 [django-tutorial]: TODO-write-the-django-tutorial-URL-here
