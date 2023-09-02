@@ -10,7 +10,15 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 ## Install and Configure the Application
 
-See [Installation](../../wiki/Installation) in the project wiki.
+* clone this repository into your preferred location
+```sh
+git clone https://github.com/oatwarat/ku-polls.git
+```
+
+* change your directory into ku-polls
+```sh
+cd ku-polls
+```
 
 ## Running the Program
 
@@ -25,4 +33,4 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 - [Software Development Plan](../../wiki/Software%20Development%20Plan)
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan)
 
-[django-tutorial]: TODO-write-the-django-tutorial-URL-here
+[django-tutorial]: https://docs.djangoproject.com/en/4.1/intro/tutorial01/
