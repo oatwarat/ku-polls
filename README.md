@@ -10,24 +10,24 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 ## Install and Configure the Application
 
-* clone this repository into your preferred location
+* Clone this repository into your preferred location
 ```sh
 git clone https://github.com/oatwarat/ku-polls.git
 ```
 
-* change your directory into ku-polls
+* Change your directory into ku-polls
 ```sh
 cd ku-polls
 ```
 
 ## Running the Program
 
-* type this message in your terminal
+* Type this message in your terminal
 ```sh
 python manage.py runserver
 ```
 
-* open this site
+* Open this site
 ```sh
 http://127.0.0.1:8000/polls/
 ```
