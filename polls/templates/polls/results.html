@@ -1,9 +1,28 @@
-<h1>{{ question.question_text }}</h1>
+{% extends "polls/base.html" %}
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+{% block content %}
+  <div class="poll">
+    <h1>{{ question.question_text }} [<small>Results</small>]</h1>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    <!-- Display poll results in a table -->
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th style="text-align: left; color: #007fff;">Choice</th>
+          <th style="text-align: right; color: #007fff; margin-left: 10px; margin-right: 10px;">Votes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for choice in question.choice_set.all %}
+          <tr>
+            <td style="text-align: left;">{{ choice.choice_text }}</td>
+            <td style="text-align: right;">{{ choice.votes }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Add a "Back to List of Polls" link -->
+    <a href="{% url 'polls:index' %}" class="back-button" style="margin-top: 20px; display: block;">Back to List of Polls</a>
+  </div>
+{% endblock %}
