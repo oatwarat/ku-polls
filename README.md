@@ -1,3 +1,4 @@
+[![Unittest](https://github.com/oatwarat/ku-polls/actions/workflows/ku.yml/badge.svg)](https://github.com/oatwarat/ku-polls/actions/workflows/ku.yml)
 ## KU Polls: Online Survey Questions 
 
 An application to conduct online polls and surveys based
