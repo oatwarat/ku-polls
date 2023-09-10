@@ -1,2 +1,2 @@
-python-decouple >= 3.11.1
+python-decouple >= 3.8
 django >= 5.10
