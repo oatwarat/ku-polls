@@ -10,19 +10,27 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 ## Install and Configure the Application
 
-* clone this repository into your preferred location
+* Clone this repository into your preferred location
 ```sh
 git clone https://github.com/oatwarat/ku-polls.git
 ```
 
-* change your directory into ku-polls
+* Change your directory into ku-polls
 ```sh
 cd ku-polls
 ```
 
 ## Running the Program
 
-to be added.
+* Type this message in your terminal
+```sh
+python manage.py runserver
+```
+
+* Open this site
+```sh
+http://127.0.0.1:8000/polls/
+```
 
 ## Project Documents
 
@@ -31,8 +39,12 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 - [Vision Statement](../../wiki/Vision%20Statement)
 - [Requirements](../../wiki/Requirements)
 - [Software Development Plan](../../wiki/Software%20Development%20Plan)
+<<<<<<< HEAD
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan)
 - [Iteration 2 Plan](../../wiki/Iteration%202%20Plan)
 
+=======
+- [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](https://github.com/users/oatwarat/projects/1)
+>>>>>>> 9515575f6013442c46dab4afed0a0155571485a3
 
 [django-tutorial]: https://docs.djangoproject.com/en/4.1/intro/tutorial01/
