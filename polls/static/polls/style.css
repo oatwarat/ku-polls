@@ -1,6 +1,60 @@
-li a {
-    color: green;
+/* Add some styling to the list of poll questions */
+
+ul.poll-list {
+    list-style: none;
+    padding: 0;
 }
-body {
-    background: white url("images/background.png") no-repeat;
+
+ul.poll-list li {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+ul.poll-list li a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+ul.poll-list li p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Style the "Results" button */
+.results-button {
+    background: transparent; /* Transparent background */
+    color: #fff; /* White text color */
+    padding: 5px 10px; /* Adjust padding for a smaller button */
+    text-align: center;
+    display: inline-block; /* Keep it small and inline */
+    margin-top: 5px; /* Add margin to move the button down */
+    text-decoration: none;
+    border: 1px solid #007bff; /* Add a border */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.results-button:hover {
+    background-color: transparent; /* No background color on hover */
+    color: #FFFFFF; /* Change text color on hover to a darker blue */
+}
+}
+/* Style the page header with the title */
+.page-header {
+    text-align: center;
+    background-color: #007bff;
+    padding: 20px;
+}
+
+.title {
+    color: #fff;
+    font-size: 36px;
+    margin: 0;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

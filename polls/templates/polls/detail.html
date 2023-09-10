@@ -1,12 +1,35 @@
-<form action="{% url 'polls:vote' question.id %}" method="post">
-{% csrf_token %}
-<fieldset>
-    <legend><h1>{{ question.question_text }}</h1></legend>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-    {% endfor %}
-</fieldset>
-<input type="submit" value="Vote">
-</form>
+{% extends "polls/base.html" %}
+
+{% block content %}
+
+
+<div class="poll">
+    <h1 class="question-text">{{ question.question_text }}</h1>
+
+    {% if messages %}
+    <!-- Display messages if there are any -->
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}" class="choice-label">{{ choice.choice_text }}</label><br>
+            {% endfor %}
+        </fieldset>
+        <input type="submit" value="Vote">
+    </form>
+
+    <!-- Add a "Results" button to view results without voting -->
+    <a href="{% url 'polls:results' question.id %}" class="results-button white-text">Results</a>
+
+    <!-- Add a "Back to List of Polls" link -->
+    <a href="{% url 'polls:index' %}" class="back-link">Back to List of Polls</a>
+</div>
+{% endblock %}
