@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
@@ -16,7 +16,8 @@ class IndexView(generic.ListView):
         published in the future).
         """
         return Question.objects.filter(
-            pub_date__lte=timezone.now()
+            pub_date__lte=timezone.now(),
+            end_date__isnull=True,
         ).order_by('-pub_date')[:5]
 
 
@@ -28,7 +29,19 @@ class DetailView(generic.DetailView):
         """
         Excludes any questions that aren't published yet.
         """
-        return Question.objects.filter(pub_date__lte=timezone.now())
+        return Question.objects.filter(
+            pub_date__lte=timezone.now(),
+            end_date__isnull=True,
+        )
+
+    def get_object(self, queryset=None):
+        """
+        Return the Question object based on the current date and end_date.
+        """
+        question = super().get_object(queryset=queryset)
+        if not question.can_vote():
+            raise Http404("Question not found")
+        return question
 
 
 class ResultsView(generic.DetailView):
