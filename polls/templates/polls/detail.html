@@ -7,12 +7,12 @@
     <h1 class="question-text">{{ question.question_text }}</h1>
 
     {% if messages %}
-    <!-- Display messages if there are any -->
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
+        <!-- Display messages if there are any -->
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
     <form action="{% url 'polls:vote' question.id %}" method="post" id="vote-form">

@@ -1,28 +1,57 @@
-{% extends "polls/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ question.question_text }} - Results</title>
+    <link rel="stylesheet" href="{% static 'polls/results.css' %}">
+</head>
+<body>
+    <div class="poll">
+        <a href="{% url 'index' %}" class="title">KU-POLLS</a>
+        <h1 class="question-text">{{ question.question_text }} [<small>Results</small>]</h1>
 
-{% block content %}
-  <div class="poll">
-    <h1>{{ question.question_text }} [<small>Results</small>]</h1>
+        <!-- Display poll results in a table -->
+        <!-- Display poll results in a table -->
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Choice</th>
+                    <th>Votes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for choice in question.choice_set.all %}
+                    <tr>
+                        <td>
+                            {% if user_choice and user_choice == choice %}
+                                {{ choice.choice_text }} <span class="user-voted">(You voted)</span>
+                            {% else %}
+                                {{ choice.choice_text }}
+                            {% endif %}
+                        </td>
+                        <td>{{ choice.votes }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <!-- Display poll results in a table -->
-    <table class="results-table">
-      <thead>
-        <tr>
-          <th style="text-align: left; color: #007fff;">Choice</th>
-          <th style="text-align: right; color: #007fff; margin-left: 10px; margin-right: 10px;">Votes</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for choice in question.choice_set.all %}
-          <tr>
-            <td style="text-align: left;">{{ choice.choice_text }}</td>
-            <td style="text-align: right;">{{ choice.votes }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
 
-    <!-- Add a "Back to List of Polls" link -->
-    <a href="{% url 'polls:index' %}" class="back-button" style="margin-top: 20px; display: block;">Back to List of Polls</a>
-  </div>
-{% endblock %}
+        {% if user_choice %}
+        <p class="vote-message">You have voted for "{{ user_choice.choice_text }}"</p>
+        {% endif %}
+
+        <a href="javascript:history.go(-1);" class="back-button">Back</a>
+
+        {% if user.is_authenticated %}
+        <div id="logout-button" class="bottom-right">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Logout" class="logout-button">
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

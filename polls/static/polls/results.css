@@ -1,0 +1,103 @@
+/* Style the title */
+.title {
+    color: #fff;
+    font-size: 46px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+/* Style the question text */
+.question-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #6f664b;
+}
+
+/* Style the table */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.results-table th,
+.results-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.results-table th {
+    background-color: #a69c7c;
+    color: #fff;
+    font-weight: bold;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.results-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Style the user's voted choice in the results table */
+.results-table .user-voted {
+    font-weight: bold;
+    color: #007fff;
+}
+
+/* Style the "Back" button */
+.back-button {
+    background-color: #d1c49a;
+    color: #fff;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #ccc19f;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 16px;
+}
+
+.back-button:hover {
+    background-color: #c2beb1;
+}
+
+/* Style the "Logout" button */
+#logout-button form {
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#logout-button form input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #d1c49a;
+    color: #fff;
+    border: 1px solid #ccc19f;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#logout-button form input[type="submit"]:hover {
+    background-color: #c2beb1;
+}
+
+body {
+    background-image: url('https://img.freepik.com/free-photo/beige-abstract-wallpaper-background-image_53876-102527.jpg?w=1800&t=st=1694957460~exp=1694958060~hmac=9b76bfd6c0ee7ed33b0678cda6babdd1ff1ec37cda6960f4b8f8577ace4f6d77');
+    background-size: cover;
+    background-repeat: no-repeat;
+}

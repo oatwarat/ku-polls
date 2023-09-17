@@ -115,3 +115,10 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.messages .success {
+    color: #6f664b; /* Change the text color to green */
+    font-weight: bold;
+    font-size: 18px; /* Adjust the font size */
+    /* Add any other CSS styles you want */
+}

@@ -130,23 +130,29 @@ def results(request, question_id):
 def vote(request, question_id):
     """Handles the voting for a question's choices."""
     question = get_object_or_404(Question, pk=question_id)
+
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
+        # Redisplay the question voting form with an error message.
+        messages.error(request, "You didn't select a choice.")
         return render(request, 'polls/detail.html', {
             'question': question,
-            'error_message': "You didn't select a choice.",
         })
+
     this_user = request.user
     try:
-        # find a vote for this user and this question
+        # Find a vote for this user and this question.
         vote = Vote.objects.get(user=this_user, choice__question=question)
         vote.choice = selected_choice
     except Vote.DoesNotExist:
-        # no matching vote - create new vote
+        # No matching vote - create a new vote.
         vote = Vote(user=this_user, choice=selected_choice)
+
     vote.save()
-    messages.success(request, "The voting was successful")
+
+    # Display a success message with the selected choice text.
+    messages.success(request, f'You have voted for {selected_choice.choice_text}')
+
     return HttpResponseRedirect(
         reverse('polls:results', args=(question.id,)))
