@@ -1,12 +1,14 @@
-from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.utils import timezone
-from .models import Choice, Question
+from .models import Choice, Question, Vote
 from django.urls import reverse
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.http import Http404
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 
 class IndexView(generic.ListView):
@@ -104,9 +106,13 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
+@login_required
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list}
+    context = {
+        'latest_question_list': latest_question_list,
+        'user': request.user,  # Include the user in the context
+    }
     return render(request, 'polls/index.html', context)
 
 
@@ -120,7 +126,9 @@ def results(request, question_id):
     return render(request, 'polls/results.html', {'question': question})
 
 
+@login_required
 def vote(request, question_id):
+    """Handles the voting for a question's choices."""
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
@@ -130,10 +138,15 @@ def vote(request, question_id):
             'question': question,
             'error_message': "You didn't select a choice.",
         })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+    this_user = request.user
+    try:
+        # find a vote for this user and this question
+        vote = Vote.objects.get(user=this_user, choice__question=question)
+        vote.choice = selected_choice
+    except Vote.DoesNotExist:
+        # no matching vote - create new vote
+        vote = Vote(user=this_user, choice=selected_choice)
+    vote.save()
+    messages.success(request, "The voting was successful")
+    return HttpResponseRedirect(
+        reverse('polls:results', args=(question.id,)))

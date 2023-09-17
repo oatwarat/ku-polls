@@ -8,16 +8,16 @@ ul.poll-list {
 ul.poll-list li {
     margin-bottom: 20px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #908358;
     background-color: #f9f9f9;
     border-radius: 5px;
 }
 
 ul.poll-list li a {
-    color: #007bff;
+    color: #d1c49a; /* Updated text color */
     text-decoration: none;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 ul.poll-list li p {
@@ -25,26 +25,26 @@ ul.poll-list li p {
     font-size: 16px;
 }
 
-/* Style the "Results" button */
+
 .results-button {
-    background: transparent; /* Transparent background */
-    color: #fff; /* White text color */
-    padding: 5px 10px; /* Adjust padding for a smaller button */
+    background: transparent;
+    color: #fff;
+    padding: 5px 10px;
     text-align: center;
-    display: inline-block; /* Keep it small and inline */
-    margin-top: 5px; /* Add margin to move the button down */
+    display: inline-block;
+    margin-top: 5px;
     text-decoration: none;
-    border: 1px solid #007bff; /* Add a border */
+    border: 1px solid #908358;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .results-button:hover {
-    background-color: transparent; /* No background color on hover */
-    color: #FFFFFF; /* Change text color on hover to a darker blue */
+    background-color: transparent;
+    color: #FFFFFF;
 }
 }
-/* Style the page header with the title */
+
 .page-header {
     text-align: center;
     background-color: #007bff;
@@ -53,8 +53,92 @@ ul.poll-list li p {
 
 .title {
     color: #fff;
-    font-size: 36px;
+    font-size: 46px;
     margin: 0;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+.welcome-message {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8a805e;
+}
+
+
+
+.login-button {
+    padding: 5px 10px;
+    background-color: #d1c49a;
+    color: #fff;
+    border: 1px solid #ccc19f;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #c2beb1;
+}
+#logout-button form {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#logout-button form input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #d1c49a;
+    color: #fff;
+    border: 1px solid #ccc19f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#logout-button form input[type="submit"]:hover {
+    background-color: #c2beb1;
+}
+
+/* Add a hover effect for questions */
+ul.poll-list li:hover {
+    transform: translateY(-5px); /* Move the question up slightly */
+    transition: transform 0.2s ease;
+}
+
+/* Add specific styles for the detail page */
+.poll {
+    background-color: #f5f5f5; /* Set a background color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.question-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style the form and input elements */
+form {
+    margin-top: 20px;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.choice-label {
+    font-size: 18px;
+}
+
+body {
+    background-image: url('https://img.freepik.com/free-vector/minimal-background-simple-cream-design-vector_53876-156575.jpg?w=1800&t=st=1694950440~exp=1694951040~hmac=b894315f6acd2f22a55c2deaabc3faf05ae5e4a0a5c28c25527519c318efd2ad');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+

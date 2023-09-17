@@ -3,16 +3,35 @@
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 <div class="page-header">
     <h1 class="title">KU-POLLS</h1>
+    {% if user.is_authenticated %}
+        <div class="welcome-message">
+            Welcome back, {{ user.username.title }}
+        </div>
+        <div id="logout-button">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Logout">
+            </form>
+        </div>
+    {% else %}
+        <div class="bottom-right">
+            <a href="{% url 'login' %}" class="login-button">Login</a>
+        </div>
+    {% endif %}
+
 </div>
 {% if latest_question_list %}
     <ul class="poll-list">
-    {% for question in latest_question_list %}
-        <li>
-            <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
-            <p>{{ question.pub_date|date:"F d, Y" }}</p>
-            <a href="{% url 'polls:results' question.id %}" class="results-button">Results</a>
-        </li>
-    {% endfor %}
+        {% for question in latest_question_list %}
+            <li>
+                <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                <p>
+                    Starts: {{ question.pub_date|date:"F d, Y" }}<br>
+                    Ends: {{ question.end_date|date:"F d, Y" }}
+                </p>
+                <a href="{% url 'polls:results' question.id %}" class="results-button">Results</a>
+            </li>
+        {% endfor %}
     </ul>
 {% else %}
     <p>No polls are available.</p>
