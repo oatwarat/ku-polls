@@ -1,0 +1,124 @@
+/* Style the title */
+.title {
+    color: #fff;
+    font-size: 46px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-top: -100px;
+    text-decoration: none;
+}
+
+/* Style the question text */
+.question-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #6f664b;
+}
+
+/* Style the form and input elements */
+form {
+    margin-top: 30px;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.choice-label {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Style the "Vote" and "Results" buttons */
+.vote-button, .results-button {
+    background-color: #d1c49a; /* Updated color */
+    color: #fff;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #ccc19f; /* Updated border color */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.vote-button:hover, .results-button:hover {
+    background-color: #c2beb1;
+}
+
+/* Style the "Logout" button */
+#logout-button form {
+    display: inline-block;
+    position: absolute;
+    bottom: -7px;
+    right: 10px;
+}
+
+#logout-button form input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #d1c49a; /* Updated color */
+    color: #fff;
+    border: 1px solid #ccc19f; /* Updated border color */
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+#logout-button form input[type="submit"]:hover {
+    background-color: #c2beb1;
+}
+
+/* Style the "Back" button */
+.back-button {
+    background-color: #d1c49a; /* Updated color */
+    color: #fff;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #ccc19f; /* Updated border color */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 16px;
+}
+
+.back-button:hover {
+    background-color: #c2beb1;
+}
+
+/* Style the poll background */
+.poll {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    position: relative;
+    top: 100px;
+}
+
+body {
+    background-image: url('https://img.freepik.com/free-photo/beige-earth-tone-design-space-background_53876-102507.jpg?w=1800&t=st=1694950337~exp=1694950937~hmac=5e41afbed274fc416a415bb03a0cd730f2f473abb18545b56bcd332855437c26');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.messages .success {
+    color: #6f664b; /* Change the text color to green */
+    font-weight: bold;
+    font-size: 18px; /* Adjust the font size */
+    /* Add any other CSS styles you want */
+}

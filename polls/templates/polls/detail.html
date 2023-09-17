@@ -1,21 +1,21 @@
-{% extends "polls/base.html" %}
-
+{% load static %}
 {% block content %}
-
-
+<link rel="stylesheet" href="{% static 'polls/question.css' %}">
 <div class="poll">
+    <a href="{% url 'index' %}" class="title">KU-POLLS</a>
+
     <h1 class="question-text">{{ question.question_text }}</h1>
 
     {% if messages %}
-    <!-- Display messages if there are any -->
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
+        <!-- Display messages if there are any -->
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
-    <form action="{% url 'polls:vote' question.id %}" method="post">
+    <form action="{% url 'polls:vote' question.id %}" method="post" id="vote-form">
         {% csrf_token %}
         <fieldset>
             {% for choice in question.choice_set.all %}
@@ -23,13 +23,36 @@
             <label for="choice{{ forloop.counter }}" class="choice-label">{{ choice.choice_text }}</label><br>
             {% endfor %}
         </fieldset>
-        <input type="submit" value="Vote">
+        <input type="submit" value="Vote" class="vote-button">
     </form>
 
     <!-- Add a "Results" button to view results without voting -->
-    <a href="{% url 'polls:results' question.id %}" class="results-button white-text">Results</a>
-
-    <!-- Add a "Back to List of Polls" link -->
-    <a href="{% url 'polls:index' %}" class="back-link">Back to List of Polls</a>
+    <a href="{% url 'polls:results' question.id %}" class="results-button">Results</a>
 </div>
+
+{% if user.is_authenticated %}
+<div id="logout-button" class="bottom-right">
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Logout" class="logout-button">
+    </form>
+</div>
+{% else %}
+<div class="bottom-right">
+    <a href="{% url 'login' %}" class="login-button">Login</a>
+</div>
+{% endif %}
+
+<a href="{% url 'polls:index' %}" class="back-button">Back</a>
+
+<script>
+    document.getElementById("vote-form").addEventListener("submit", function(event) {
+        const selectedChoice = document.querySelector('input[name="choice"]:checked');
+        if (!selectedChoice) {
+            alert("Please select a choice before voting.");
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+</script>
+
 {% endblock %}

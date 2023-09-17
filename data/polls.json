@@ -1,0 +1,214 @@
+[
+{
+  "model": "polls.question",
+  "pk": 2,
+  "fields": {
+    "question_text": "what type of movie do you like the most",
+    "pub_date": "2023-09-03T12:53:25Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 3,
+  "fields": {
+    "question_text": "what type of coffee do you prefer",
+    "pub_date": "2023-09-03T13:00:50Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 4,
+  "fields": {
+    "question_text": "what's your favorite binge-watching platform",
+    "pub_date": "2023-09-03T13:01:39Z",
+    "end_date": "2023-10-04T19:13:13Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 5,
+  "fields": {
+    "question_text": "testy",
+    "pub_date": "2023-09-10T11:11:00Z",
+    "end_date": "2023-09-10T11:23:49Z"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 4,
+  "fields": {
+    "question": 2,
+    "choice_text": "action movie"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 5,
+  "fields": {
+    "question": 2,
+    "choice_text": "romantic movie"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 6,
+  "fields": {
+    "question": 2,
+    "choice_text": "dramatic movie"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 7,
+  "fields": {
+    "question": 2,
+    "choice_text": "comedy movie"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 8,
+  "fields": {
+    "question": 2,
+    "choice_text": "adventure movie"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 9,
+  "fields": {
+    "question": 3,
+    "choice_text": "latte"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 10,
+  "fields": {
+    "question": 3,
+    "choice_text": "mocha"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 11,
+  "fields": {
+    "question": 3,
+    "choice_text": "americano"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 12,
+  "fields": {
+    "question": 3,
+    "choice_text": "cappuccino"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 13,
+  "fields": {
+    "question": 4,
+    "choice_text": "netflix"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 14,
+  "fields": {
+    "question": 4,
+    "choice_text": "amazon prime"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 15,
+  "fields": {
+    "question": 4,
+    "choice_text": "disney plus"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 16,
+  "fields": {
+    "question": 4,
+    "choice_text": "hbo max"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 17,
+  "fields": {
+    "question": 5,
+    "choice_text": "a"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 18,
+  "fields": {
+    "question": 5,
+    "choice_text": "b"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 19,
+  "fields": {
+    "question": 5,
+    "choice_text": "c"
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "choice": 14
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "choice": 8
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 3,
+  "fields": {
+    "user": 2,
+    "choice": 8
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 4,
+  "fields": {
+    "user": 2,
+    "choice": 12
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 5,
+  "fields": {
+    "user": 2,
+    "choice": 15
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 6,
+  "fields": {
+    "user": 1,
+    "choice": 10
+  }
+}
+]
