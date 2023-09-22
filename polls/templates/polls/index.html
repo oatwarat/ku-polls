@@ -1,5 +1,5 @@
 {% load static %}
-
+{% block content %}
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 <div class="page-header">
     <h1 class="title">KU-POLLS</h1>
@@ -16,19 +16,22 @@
     {% else %}
         <div class="bottom-right">
             <a href="{% url 'login' %}" class="login-button">Login</a>
+            <a href="{% url 'signup' %}" class="login-button">Sign Up</a>
         </div>
     {% endif %}
-
 </div>
 {% if latest_question_list %}
     <ul class="poll-list">
         {% for question in latest_question_list %}
             <li>
-                <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                {% if question.can_vote %}
+                    <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                {% else %}
+                    <span>{{ question.question_text }} (CLOSED)</span>
+                {% endif %}
                 <p>
                     <p style="color: #856d4d;">Starts: {{ question.pub_date|date:"F d, Y" }}</p>
                     <p style="color: #d3bbb5;">Ends: {{ question.end_date|date:"F d, Y" }}</p>
-
                 </p>
                 <a href="{% url 'polls:results' question.id %}" class="results-button">Results</a>
             </li>
@@ -37,3 +40,4 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+{% endblock %}

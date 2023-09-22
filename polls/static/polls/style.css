@@ -14,7 +14,7 @@ ul.poll-list li {
 }
 
 ul.poll-list li a {
-    color: #d1c49a; /* Updated text color */
+    color: #d1c49a;
     text-decoration: none;
     font-weight: bold;
     font-size: 22px;
@@ -141,4 +141,8 @@ body {
     background-repeat: no-repeat;
 }
 
+.poll-list li span {
+    color: #908358;
+    font-size: 22px;
 
+}
