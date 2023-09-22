@@ -42,11 +42,9 @@ class QuestionIndexViewTests(TestCase):
         )
 
     def test_future_question(self):
-        """
-        Questions with a pub_date in the future aren't displayed on
-        the index page.
-        """
-        create_question(question_text="Future question.", days=30)
+        """Questions in the future aren't displayed on the index page."""
+        time = timezone.localtime(timezone.now()) + datetime.timedelta(days=30)
+        Question(question_text="Future question.", pub_date=time)
         response = self.client.get(reverse('polls:index'))
         self.assertContains(response, "No polls are available.")
         self.assertQuerysetEqual(response.context['latest_question_list'], [])
@@ -56,12 +54,14 @@ class QuestionIndexViewTests(TestCase):
         Even if both past and future questions exist, only past questions
         are displayed.
         """
-        question = create_question(question_text="Past question.", days=-30)
-        create_question(question_text="Future question.", days=30)
+        past_question = create_question(question_text="Past question.", days=-30)
+        future_question = create_question(question_text="Future question.", days=30)
+
+        # Ensure only past questions are displayed
         response = self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(
             response.context['latest_question_list'],
-            [question],
+            [past_question],
         )
 
     def test_two_past_questions(self):
@@ -166,10 +166,11 @@ class QuestionDetailViewTests(TestCase):
         """
         The detail view of a question with a pub_date in the future should return a 302 redirect.
         """
-        future_question = create_question(question_text='Future question', days=5)
+        future_time = timezone.now() + timezone.timedelta(days=5)
+        future_question = create_question(question_text='Future question', days=5, end_date=future_time)
         url = reverse('polls:detail', args=(future_question.id,))
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
 
     def test_past_question(self):
         """

@@ -29,7 +29,7 @@ class IndexView(generic.ListView):
         Returns:
             QuerySet: The list of latest questions.
         """
-        return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
@@ -79,12 +79,7 @@ class DetailView(generic.DetailView):
             return redirect('polls:index')
 
         if question.end_date and question.end_date < timezone.now():
-            context = {
-                'user': request.user,
-                'question': question,
-                'user_has_voted': False,
-            }
-            return render(request, self.template_name, context)
+            return HttpResponseRedirect(reverse('polls:index'))
 
         context = {
             'user': request.user,
