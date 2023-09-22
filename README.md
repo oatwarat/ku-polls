@@ -40,8 +40,8 @@ You can use this following account to LOGIN
 
 | Username  | Password        |
 |-----------|-----------------|
-|   harry   | hackme22 |
-|   warat   | oatwarat2405 |
+|   example1   | testsystem |
+|   example2  | testsystem |
 ## Project Documents
 
 All project documents are in the [Project Wiki](../../wiki/Home).
@@ -49,8 +49,10 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 - [Vision Statement](../../wiki/Vision%20Statement)
 - [Requirements](../../wiki/Requirements)
 - [Software Development Plan](../../wiki/Software%20Development%20Plan)
+- [Domain Model](https://github.com/oatwarat/ku-polls/wiki/Domain-model)
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](https://github.com/users/oatwarat/projects/1/views/1?filterQuery=iteration%3A1)
 - [Iteration 2 Plan](../../wiki/Iteration%202%20Plan) and [Task Board](https://github.com/users/oatwarat/projects/1/views/6?filterQuery=iteration%3A2)
 - [Iteration 3 Plan](../../wiki/Iteration%203%20Plan) and [Task Board](https://github.com/users/oatwarat/projects/1/views/8)
+- [Iteration 4 Plan](../../wiki/Iteration%204%20Plan) and [Task Board](https://github.com/users/oatwarat/projects/1/views/9)
 
 [django-tutorial]: https://docs.djangoproject.com/en/4.1/intro/tutorial01/
