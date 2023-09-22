@@ -111,14 +111,13 @@ fieldset {
 }
 
 body {
-    background-image: url('https://img.freepik.com/free-photo/beige-earth-tone-design-space-background_53876-102507.jpg?w=1800&t=st=1694950337~exp=1694950937~hmac=5e41afbed274fc416a415bb03a0cd730f2f473abb18545b56bcd332855437c26');
+    background-image: url('https://i.pinimg.com/originals/7b/23/95/7b239546b69a9ff73611806dcdbe80f7.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.messages .success {
-    color: #6f664b; /* Change the text color to green */
+.vote-message {
+    font-size: 18px;
+    color: #6f664b;
     font-weight: bold;
-    font-size: 18px; /* Adjust the font size */
-    /* Add any other CSS styles you want */
 }

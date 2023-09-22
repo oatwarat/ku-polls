@@ -43,6 +43,9 @@
         {% endif %}
     </header>
     <div class="content">
+        <!-- Add a block for displaying error messages -->
+        {% block error_message %}
+        {% endblock %}
         {% block content %}
         {% endblock %}
     </div>

@@ -34,6 +34,9 @@ http://127.0.0.1:8000/polls/
 ```
 
 * Login
+```sh
+You can use this following account to LOGIN
+```
 
 | Username  | Password        |
 |-----------|-----------------|

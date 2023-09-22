@@ -76,15 +76,13 @@ class DetailView(generic.DetailView):
             return question
         except Question.DoesNotExist:
             # Handle the case when the question with the specified ID is not found
-            messages.error(self.request, "This poll does not exist.")
-            return redirect('polls:index')
+            error_message = "This poll does not exist."
+            return render(self.request, 'polls/base.html', {'error_message': error_message})
 
     def get(self, request, *args, **kwargs):
         try:
             question = self.get_object()
         except Http404:
-            # Question with the specified ID does not exist
-            messages.error(request, "This poll does not exist.")
             return redirect('polls:index')
 
         if not question.can_vote():
@@ -92,6 +90,20 @@ class DetailView(generic.DetailView):
             return redirect('polls:index')
 
         return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        question = context['question']
+
+        if self.request.user.is_authenticated:
+            try:
+                user_vote = Vote.objects.get(user=self.request.user, choice__question=question)
+                context['user_has_voted'] = True
+                context['selected_choice'] = user_vote.choice
+            except Vote.DoesNotExist:
+                context['user_has_voted'] = False
+
+        return context
 
 
 class ResultsView(generic.DetailView):
@@ -116,9 +128,19 @@ def index(request):
     return render(request, 'polls/index.html', context)
 
 
+@login_required
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/detail.html', {'question': question})
+    selected_choice = None
+
+    # Check if the user has already voted for this question
+    if request.user.is_authenticated:
+        try:
+            selected_choice = Vote.objects.get(user=request.user, choice__question=question).choice
+        except Vote.DoesNotExist:
+            pass
+
+    return render(request, 'polls/detail.html', {'question': question, 'selected_choice': selected_choice})
 
 
 def results(request, question_id):
@@ -135,7 +157,6 @@ def vote(request, question_id):
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form with an error message.
-        messages.error(request, "You didn't select a choice.")
         return render(request, 'polls/detail.html', {
             'question': question,
         })
@@ -150,9 +171,6 @@ def vote(request, question_id):
         vote = Vote(user=this_user, choice=selected_choice)
 
     vote.save()
-
-    # Display a success message with the selected choice text.
-    messages.success(request, f'You have voted for {selected_choice.choice_text}')
 
     return HttpResponseRedirect(
         reverse('polls:results', args=(question.id,)))

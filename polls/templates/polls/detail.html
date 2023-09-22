@@ -15,6 +15,10 @@
         </ul>
     {% endif %}
 
+    {% if user_has_voted %}
+    <p class="vote-message">You have voted for "{{ selected_choice.choice_text }}"</p>
+    {% endif %}
+
     <form action="{% url 'polls:vote' question.id %}" method="post" id="vote-form">
         {% csrf_token %}
         <fieldset>
