@@ -4,7 +4,13 @@
 <div class="poll">
     <a href="{% url 'index' %}" class="title">KU-POLLS</a>
 
-    <h1 class="question-text">{{ question.question_text }}</h1>
+    <h1 class="question-text {% if question.end_date and question.end_date < timezone.now %}closed-question{% endif %}">
+        {{ question.question_text }}
+        {% if question.end_date and question.end_date < timezone.now %}
+            (Closed)
+        {% endif %}
+    </h1>
+
 
     {% if messages %}
         <!-- Display messages if there are any -->
@@ -47,6 +53,7 @@
 </div>
 {% endif %}
 
+
 <a href="{% url 'polls:index' %}" class="back-button">Back</a>
 
 <script>
@@ -54,9 +61,13 @@
         const selectedChoice = document.querySelector('input[name="choice"]:checked');
         if (!selectedChoice) {
             alert("Please select a choice before voting.");
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault();
         }
     });
-</script>
 
+    // Add an event listener for the popstate event (triggered when the back button is clicked)
+    window.addEventListener('popstate', function(event) {
+        location.reload();
+    });
+</script>
 {% endblock %}

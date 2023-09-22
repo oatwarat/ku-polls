@@ -1,17 +1,68 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Please Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://e1.pxfuel.com/desktop-wallpaper/596/878/desktop-wallpaper-backgrounds-minimalism-beige-aesthetic.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .login-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
 </head>
 <body>
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <p>
-  <button type="submit">Login</button>
-  </p>
-  <input type="hidden" name="next" value="{{next}}"/>
- {# If you have a sign-up page, then add a link here #}
-</form>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 </html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://e0.pxfuel.com/wallpapers/248/988/desktop-wallpaper-clouds-minimalistic-steampunk-octopuses-balloons-reversed-reality-u-boat.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .signup-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px; /* Increased padding for a larger box */
+            max-width: 500px; /* Increased max-width for a wider box */
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 15px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+<div class="signup-box">
+    <h2>Sign Up</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        {{ form.username }}
+        <label for="password1">Password:</label>
+        {{ form.password1 }}
+        <label for="password2">Confirm Password:</label>
+        {{ form.password2 }}
+        <button type="submit">Sign Up</button>
+    </form>
+    {% if form.errors %}
+    <div class="error-message">
+        {% for field, errors in form.errors.items %}
+            {{ field|title }}: {{ errors|join:", " }}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>

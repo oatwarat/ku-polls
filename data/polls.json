@@ -3,36 +3,36 @@
   "model": "polls.question",
   "pk": 2,
   "fields": {
-    "question_text": "what type of movie do you like the most",
-    "pub_date": "2023-09-03T12:53:25Z",
-    "end_date": null
+    "question_text": "What type of movie do you like the most",
+    "pub_date": "2023-09-11T12:53:25Z",
+    "end_date": "2024-02-08T12:48:36Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 3,
   "fields": {
-    "question_text": "what type of coffee do you prefer",
-    "pub_date": "2023-09-03T13:00:50Z",
-    "end_date": null
+    "question_text": "What type of coffee do you prefer",
+    "pub_date": "2023-09-20T13:00:50Z",
+    "end_date": "2023-11-23T12:47:39Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 4,
   "fields": {
-    "question_text": "what's your favorite binge-watching platform",
-    "pub_date": "2023-09-03T13:01:39Z",
-    "end_date": "2023-10-04T19:13:13Z"
+    "question_text": "What's your favorite binge-watching platform",
+    "pub_date": "2023-09-05T13:01:39Z",
+    "end_date": "2023-12-25T12:16:01Z"
   }
 },
 {
   "model": "polls.question",
-  "pk": 5,
+  "pk": 6,
   "fields": {
-    "question_text": "testy",
-    "pub_date": "2023-09-10T11:11:00Z",
-    "end_date": "2023-09-10T11:23:49Z"
+    "question_text": "What's your favorite sport",
+    "pub_date": "2023-09-04T16:26:44Z",
+    "end_date": "2023-09-22T17:09:51Z"
   }
 },
 {
@@ -40,7 +40,7 @@
   "pk": 4,
   "fields": {
     "question": 2,
-    "choice_text": "action movie"
+    "choice_text": "Action movie"
   }
 },
 {
@@ -48,7 +48,7 @@
   "pk": 5,
   "fields": {
     "question": 2,
-    "choice_text": "romantic movie"
+    "choice_text": "Romantic movie"
   }
 },
 {
@@ -56,7 +56,7 @@
   "pk": 6,
   "fields": {
     "question": 2,
-    "choice_text": "dramatic movie"
+    "choice_text": "Dramatic movie"
   }
 },
 {
@@ -64,7 +64,7 @@
   "pk": 7,
   "fields": {
     "question": 2,
-    "choice_text": "comedy movie"
+    "choice_text": "Comedy movie"
   }
 },
 {
@@ -72,7 +72,7 @@
   "pk": 8,
   "fields": {
     "question": 2,
-    "choice_text": "adventure movie"
+    "choice_text": "Adventure movie"
   }
 },
 {
@@ -80,7 +80,7 @@
   "pk": 9,
   "fields": {
     "question": 3,
-    "choice_text": "latte"
+    "choice_text": "Latte"
   }
 },
 {
@@ -88,7 +88,7 @@
   "pk": 10,
   "fields": {
     "question": 3,
-    "choice_text": "mocha"
+    "choice_text": "Mocha"
   }
 },
 {
@@ -96,7 +96,7 @@
   "pk": 11,
   "fields": {
     "question": 3,
-    "choice_text": "americano"
+    "choice_text": "Americano"
   }
 },
 {
@@ -104,7 +104,7 @@
   "pk": 12,
   "fields": {
     "question": 3,
-    "choice_text": "cappuccino"
+    "choice_text": "Cappuccino"
   }
 },
 {
@@ -112,7 +112,7 @@
   "pk": 13,
   "fields": {
     "question": 4,
-    "choice_text": "netflix"
+    "choice_text": "Netflix"
   }
 },
 {
@@ -120,7 +120,7 @@
   "pk": 14,
   "fields": {
     "question": 4,
-    "choice_text": "amazon prime"
+    "choice_text": "Amazon prime"
   }
 },
 {
@@ -128,7 +128,7 @@
   "pk": 15,
   "fields": {
     "question": 4,
-    "choice_text": "disney plus"
+    "choice_text": "Disney plus"
   }
 },
 {
@@ -136,31 +136,95 @@
   "pk": 16,
   "fields": {
     "question": 4,
-    "choice_text": "hbo max"
+    "choice_text": "Hbo-max"
   }
 },
 {
   "model": "polls.choice",
-  "pk": 17,
+  "pk": 20,
   "fields": {
-    "question": 5,
-    "choice_text": "a"
+    "question": 3,
+    "choice_text": "Espresso"
   }
 },
 {
   "model": "polls.choice",
-  "pk": 18,
+  "pk": 21,
   "fields": {
-    "question": 5,
-    "choice_text": "b"
+    "question": 3,
+    "choice_text": "Others"
   }
 },
 {
   "model": "polls.choice",
-  "pk": 19,
+  "pk": 22,
   "fields": {
-    "question": 5,
-    "choice_text": "c"
+    "question": 2,
+    "choice_text": "Others"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 23,
+  "fields": {
+    "question": 4,
+    "choice_text": "Youtube"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 24,
+  "fields": {
+    "question": 4,
+    "choice_text": "Others"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 25,
+  "fields": {
+    "question": 6,
+    "choice_text": "Football"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 26,
+  "fields": {
+    "question": 6,
+    "choice_text": "Basketball"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 27,
+  "fields": {
+    "question": 6,
+    "choice_text": "Cricket"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 28,
+  "fields": {
+    "question": 6,
+    "choice_text": "Badminton"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 29,
+  "fields": {
+    "question": 6,
+    "choice_text": "Volleyball"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 30,
+  "fields": {
+    "question": 6,
+    "choice_text": "Others"
   }
 },
 {
@@ -168,7 +232,7 @@
   "pk": 1,
   "fields": {
     "user": 1,
-    "choice": 14
+    "choice": 15
   }
 },
 {
@@ -176,7 +240,7 @@
   "pk": 2,
   "fields": {
     "user": 1,
-    "choice": 8
+    "choice": 6
   }
 },
 {
@@ -184,7 +248,7 @@
   "pk": 3,
   "fields": {
     "user": 2,
-    "choice": 8
+    "choice": 4
   }
 },
 {
@@ -200,7 +264,7 @@
   "pk": 5,
   "fields": {
     "user": 2,
-    "choice": 15
+    "choice": 13
   }
 },
 {
@@ -208,7 +272,31 @@
   "pk": 6,
   "fields": {
     "user": 1,
-    "choice": 10
+    "choice": 11
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 7,
+  "fields": {
+    "user": 1,
+    "choice": 26
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 8,
+  "fields": {
+    "user": 4,
+    "choice": 5
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 9,
+  "fields": {
+    "user": 4,
+    "choice": 15
   }
 }
 ]

@@ -11,8 +11,6 @@
         <a href="{% url 'index' %}" class="title">KU-POLLS</a>
         <h1 class="question-text">{{ question.question_text }} [<small>Results</small>]</h1>
 
-        <!-- Display poll results in a table -->
-        <!-- Display poll results in a table -->
         <table class="results-table">
             <thead>
                 <tr>
@@ -24,15 +22,15 @@
                 {% for choice in question.choice_set.all %}
                     <tr>
                         <td>
-                            {% if user_choice and user_choice == choice %}
-                                {{ choice.choice_text }} <span class="user-voted">(You voted)</span>
-                            {% else %}
-                                {{ choice.choice_text }}
+                            {{ choice.choice_text }}
+                            {% if user_choice == choice %}
+                                <span class="user-voted">(You voted)</span>
                             {% endif %}
                         </td>
                         <td>{{ choice.votes }}</td>
                     </tr>
                 {% endfor %}
+
             </tbody>
         </table>
 

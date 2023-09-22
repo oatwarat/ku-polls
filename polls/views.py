@@ -4,11 +4,11 @@ from django.views import generic
 from django.utils import timezone
 from .models import Choice, Question, Vote
 from django.urls import reverse
-from django.contrib import messages
-from django.shortcuts import redirect
 from django.http import Http404
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
 
 
 class IndexView(generic.ListView):
@@ -29,10 +29,7 @@ class IndexView(generic.ListView):
         Returns:
             QuerySet: The list of latest questions.
         """
-        return Question.objects.filter(
-            pub_date__lte=timezone.now(),
-            end_date__isnull=True,
-        ).order_by('-pub_date')[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):
@@ -54,10 +51,7 @@ class DetailView(generic.DetailView):
         Returns:
             QuerySet: The list of questions.
         """
-        return Question.objects.filter(
-            pub_date__lte=timezone.now(),
-            end_date__isnull=True,
-        )
+        return Question.objects.all()
 
     def get_object(self, queryset=None):
         """
@@ -71,8 +65,7 @@ class DetailView(generic.DetailView):
         """
         try:
             question = super().get_object(queryset=queryset)
-            if not question.can_vote():
-                raise Http404("Voting for this poll is not allowed.")
+
             return question
         except Question.DoesNotExist:
             # Handle the case when the question with the specified ID is not found
@@ -85,10 +78,12 @@ class DetailView(generic.DetailView):
         except Http404:
             return redirect('polls:index')
 
-        if not question.can_vote():
-            messages.error(request, "Voting for this poll is not allowed.")
-            return redirect('polls:index')
+        if question.end_date and question.end_date < timezone.now():
+            return HttpResponseRedirect(reverse('polls:index'))
 
+        context = {
+            'user': request.user,
+        }
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -145,7 +140,14 @@ def detail(request, question_id):
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/results.html', {'question': question})
+    user_choice = None
+    if request.user.is_authenticated:
+        try:
+            user_vote = Vote.objects.get(user=request.user, choice__question=question)
+            user_choice = user_vote.choice
+        except Vote.DoesNotExist:
+            pass
+    return render(request, 'polls/results.html', {'question': question, 'user_choice': user_choice})
 
 
 @login_required
@@ -171,6 +173,8 @@ def vote(request, question_id):
         vote = Vote(user=this_user, choice=selected_choice)
 
     vote.save()
+    user_has_voted = True
+    selected_choice = vote.choice
 
     return HttpResponseRedirect(
         reverse('polls:results', args=(question.id,)))
