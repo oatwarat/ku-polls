@@ -81,9 +81,6 @@ class DetailView(generic.DetailView):
         if question.end_date and question.end_date < timezone.now():
             return HttpResponseRedirect(reverse('polls:index'))
 
-        context = {
-            'user': request.user,
-        }
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -173,8 +170,6 @@ def vote(request, question_id):
         vote = Vote(user=this_user, choice=selected_choice)
 
     vote.save()
-    user_has_voted = True
-    selected_choice = vote.choice
 
     return HttpResponseRedirect(
         reverse('polls:results', args=(question.id,)))

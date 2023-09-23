@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = config('SECRET_KEY', default='fake-secret-key')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -71,7 +69,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
@@ -82,12 +79,11 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTHENTICATION_BACKENDS = [
     # username & password authentication
-   'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -105,8 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Where to redirect visitor after login or logout
-LOGIN_REDIRECT_URL = 'polls:index'    # after login, show list of polls
-LOGOUT_REDIRECT_URL = 'login'         # after logout, direct to where?
+LOGIN_REDIRECT_URL = 'polls:index'  # after login, show list of polls
+LOGOUT_REDIRECT_URL = 'login'  # after logout, direct to where?
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
@@ -118,8 +114,6 @@ TIME_ZONE = 'Asia/Bangkok'
 USE_I18N = True
 
 USE_TZ = True
-
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/

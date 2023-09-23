@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 import django.test
 from django.urls import reverse
 
+
 def create_question(question_text, days, end_date=None):
     """
     Create a question with the given `question_text`, a pub_date
@@ -55,7 +56,6 @@ class QuestionIndexViewTests(TestCase):
         are displayed.
         """
         past_question = create_question(question_text="Past question.", days=-30)
-        future_question = create_question(question_text="Future question.", days=30)
 
         # Ensure only past questions are displayed
         response = self.client.get(reverse('polls:index'))
@@ -117,7 +117,6 @@ class QuestionModelTests(TestCase):
         """
         is_published() should return True for a question with the default (now) pub_date.
         """
-        current_time = timezone.now()
         default_question = create_question(question_text="Default question.", days=0)
         self.assertIs(default_question.is_published(), True)
 
