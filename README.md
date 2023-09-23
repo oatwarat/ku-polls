@@ -10,16 +10,11 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 
 ## Install and Configure the Application
-
-* Clone this repository into your preferred location
 ```sh
-git clone https://github.com/oatwarat/ku-polls.git
+Follow this installation guide to assist you in setting up the program.
 ```
+* [Installation](Installation.md)
 
-* Change your directory into ku-polls
-```sh
-cd ku-polls
-```
 
 ## Running the Program
 
