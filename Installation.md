@@ -1,7 +1,7 @@
 ## Installation
 1. Cloning the repository.
    ```
-   git clone https://github.com/mjrchy/ku-polls.git
+   git clone https://github.com/oatwarat/ku-polls.git
    ```
 2. Access to the project directory.
    ```
