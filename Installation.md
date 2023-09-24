@@ -11,7 +11,11 @@
    ```
    python -m venv venv
    ```
-4. Install dependencies.
+4. Activate Virtual Environment.
+   ```
+   source venv/bin/activate
+   ``` 
+5. Install dependencies.
    ```
    pip install -r requirements.txt
    ```
