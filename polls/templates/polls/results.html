@@ -48,6 +48,8 @@
                 <input type="submit" value="Logout" class="logout-button">
             </form>
         </div>
+        {% else %}
+        <a href="{% url 'login' %}" class="login-button">Login</a>
         {% endif %}
     </div>
 </body>

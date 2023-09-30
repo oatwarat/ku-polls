@@ -5,9 +5,8 @@ from django.utils import timezone
 from .models import Choice, Question, Vote
 from django.urls import reverse
 from django.http import Http404
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
 from django.shortcuts import render, redirect
 
 
@@ -159,8 +158,8 @@ def vote(request, question_id):
         return render(request, 'polls/detail.html', {
             'question': question,
         })
-
     this_user = request.user
+
     try:
         # Find a vote for this user and this question.
         vote = Vote.objects.get(user=this_user, choice__question=question)
@@ -169,7 +168,14 @@ def vote(request, question_id):
         # No matching vote - create a new vote.
         vote = Vote(user=this_user, choice=selected_choice)
 
+    vote = Vote.get_vote(question=question, user=this_user)
+    if vote:
+        vote.choice = selected_choice
+    else:
+        # create a new vote
+        vote = Vote(user=this_user, choice=selected_choice)
     vote.save()
-
-    return HttpResponseRedirect(
-        reverse('polls:results', args=(question.id,)))
+    messages.info(request,
+                  f"Your vote for {selected_choice.choice_text} has been recorded.")
+    next_url = request.POST.get('next', reverse('polls:results', args=(question.id,)))
+    return HttpResponseRedirect(next_url)

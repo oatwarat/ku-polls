@@ -122,4 +122,38 @@ body {
     font-weight: bold;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.poll-question {
+    /* Styles for your poll question */
+    margin: 20px; /* Add some margin to separate it from the button */
+}
+
+.login-button {
+    background-color: #d1c49a;
+    color: #fff;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #ccc19f;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 7px;
+    right: 10px;
+    font-size: 16px;
+}
+
+.login-button:hover {
+    background-color: #c2beb1;
+}
+
+
 

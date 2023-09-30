@@ -48,11 +48,8 @@
     </form>
 </div>
 {% else %}
-<div class="bottom-right">
-    <a href="{% url 'login' %}" class="login-button">Login</a>
-</div>
+<a href="{% url 'login' %}" class="login-button">Login</a>
 {% endif %}
-
 
 <a href="{% url 'polls:index' %}" class="back-button">Back</a>
 
