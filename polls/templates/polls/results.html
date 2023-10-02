@@ -35,8 +35,8 @@
         </table>
 
 
-        {% if user_choice %}
-        <p class="vote-message">You have voted for "{{ user_choice.choice_text }}"</p>
+        {% if user_has_voted %}
+        <p class="vote-message">You have voted for "{{ selected_choice.choice_text }}"</p>
         {% endif %}
 
         <a href="javascript:history.go(-1);" class="back-button">Back</a>

@@ -172,10 +172,7 @@ def vote(request, question_id):
     if vote:
         vote.choice = selected_choice
     else:
-        # create a new vote
         vote = Vote(user=this_user, choice=selected_choice)
     vote.save()
-    messages.info(request,
-                  f"Your vote for {selected_choice.choice_text} has been recorded.")
     next_url = request.POST.get('next', reverse('polls:results', args=(question.id,)))
     return HttpResponseRedirect(next_url)

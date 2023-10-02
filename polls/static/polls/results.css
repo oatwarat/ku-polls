@@ -120,3 +120,9 @@ body {
 .login-button:hover {
     background-color: #c2beb1;
 }
+
+.vote-message {
+    font-size: 18px;
+    color: #6f664b;
+    font-weight: bold;
+}
